@@ -66,9 +66,18 @@ function getComputerChoice() {
  * depending on it's answer, we'll return it's choice
  * or continuing to ask him otherwise.
  * 
+ * @see getComputerChoice for choice number and their corresponding values.
  * @returns
  */
 function getHumanChoice() {
+    let choiceAlertDescription = 'Please enter your choice\n';
+    choiceAlertDescription += '0: rock\n';
+    choiceAlertDescription += '1: paper\n';
+    choiceAlertDescription += '2: scissors';
+
+    const choice = prompt(choiceAlertDescription);
+
+    return choice;
 }
 
 /**
