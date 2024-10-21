@@ -94,11 +94,11 @@ function playGame() {
     console.clear();
     showWelcome();
 
-    // console.log("** Test computer choice");
-    // const comChoice = getComputerChoice();
-    // console.log("Computer plays:", comChoice);
-
-    console.log("** Test User choice");
+    console.log("** Game for user");
     const uChoice = getHumanChoice(); 
     console.log("You play:", uChoice);
+
+    console.log("** Game for computer");
+    const comChoice = getComputerChoice();
+    console.log("Computer plays:", comChoice);
 }
