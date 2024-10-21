@@ -59,6 +59,17 @@ function getComputerChoice() {
     return choice;
 }
 
+/**
+ * This method return the user's choice.
+ * The user(human player) will be asked 
+ * (using `prompt`) to enter it's choice then 
+ * depending on it's answer, we'll return it's choice
+ * or continuing to ask him otherwise.
+ * 
+ * @returns
+ */
+function getHumanChoice() {
+}
 
 /**
  * Main Method to start the game
@@ -70,7 +81,7 @@ function playGame() {
     console.clear();
     showWelcome();
     
-    console.log("** Test computer choice");
-    const comChoice = getComputerChoice(); 
-    console.log("Computer plays:", correspondingGameByNumber(comChoice));
+    // console.log("** Test computer choice");
+    // const comChoice = getComputerChoice(); 
+    // console.log("Computer plays:", correspondingGameByNumber(comChoice));
 }
