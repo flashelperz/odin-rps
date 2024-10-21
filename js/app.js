@@ -55,8 +55,7 @@ function correspondingGameByNumber(pickedNumber) {
  */
 function getComputerChoice() {
     const choice = Math.floor(Math.random() * 3);
-    console.log("Computer choice", choice);
-
+    
     return choice;
 }
 
@@ -66,8 +65,12 @@ function getComputerChoice() {
  * 
  * The game is in `5 rounds` and user plays 
  * against the `computer`
- */
+*/
 function playGame() {
     console.clear();
     showWelcome();
+    
+    console.log("** Test computer choice");
+    const comChoice = getComputerChoice(); 
+    console.log("Computer plays:", correspondingGameByNumber(comChoice));
 }
