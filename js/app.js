@@ -55,7 +55,7 @@ function correspondingGameByNumber(pickedNumber) {
  */
 function getComputerChoice() {
     const choice = Math.floor(Math.random() * 3);
-    
+
     return correspondingGameByNumber(choice);
 }
 
@@ -70,14 +70,18 @@ function getComputerChoice() {
  * @returns
  */
 function getHumanChoice() {
-    let choiceAlertDescription = 'Please enter your choice\n';
+    let choiceAlertDescription = 'Please enter your choice\n\n';
     choiceAlertDescription += '0: rock\n';
     choiceAlertDescription += '1: paper\n';
     choiceAlertDescription += '2: scissors';
 
     const choice = prompt(choiceAlertDescription);
 
-    return choice;
+    try {
+        return correspondingGameByNumber(choice);
+    } catch (error) {
+        return getHumanChoice();
+    }
 }
 
 /**
@@ -90,11 +94,11 @@ function playGame() {
     console.clear();
     showWelcome();
 
-    console.log("** Test computer choice");
-    const comChoice = getComputerChoice(); 
-    console.log("Computer plays:", comChoice);
+    // console.log("** Test computer choice");
+    // const comChoice = getComputerChoice();
+    // console.log("Computer plays:", comChoice);
 
-    // console.log("** Test User choice");
-    // const comChoice = getHumanChoice(); 
-    // console.log("You play:", correspondingGameByNumber(comChoice));
+    console.log("** Test User choice");
+    const uChoice = getHumanChoice(); 
+    console.log("You play:", uChoice);
 }
