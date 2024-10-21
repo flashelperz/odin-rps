@@ -89,8 +89,12 @@ function getHumanChoice() {
 function playGame() {
     console.clear();
     showWelcome();
-    
+
     // console.log("** Test computer choice");
     // const comChoice = getComputerChoice(); 
     // console.log("Computer plays:", correspondingGameByNumber(comChoice));
+
+    console.log("** Test User choice");
+    const comChoice = getHumanChoice(); 
+    console.log("You play:", correspondingGameByNumber(comChoice));
 }
