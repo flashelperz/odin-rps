@@ -92,7 +92,7 @@ function getHumanChoice() {
  */
 function playRound(uChoice, comChoice) {
     if (uChoice === comChoice) {
-        console.log("Draw game");
+        console.log("\n\t\t*********** Draw game ***********\n");
         return;
     }
 
@@ -101,11 +101,11 @@ function playRound(uChoice, comChoice) {
         || (uChoice === 'paper' && comChoice === 'rock');
 
     if (isUserWon) {
-        console.log(`You win! ${uChoice} beats ${comChoice}`);
+        console.log(`\n\t\t*********** You win! ${uChoice} beats ${comChoice} ***********\n`);
         return;
     }
 
-    console.log(`You lose! ${comChoice} beats ${uChoice}`);
+    console.log(`\n\t\t*********** You lose! ${comChoice} beats ${uChoice} ***********\n`);
     return;
 }
 
@@ -119,11 +119,13 @@ function playGame() {
     console.clear();
     showWelcome();
 
-    // console.log("** Game for user");
-    // const uChoice = getHumanChoice(); 
-    // console.log("You play:", uChoice);
+    console.log("** Game for user");
+    const uChoice = getHumanChoice();
+    console.log("You play:", uChoice);
 
-    // console.log("** Game for computer");
-    // const comChoice = getComputerChoice();
-    // console.log("Computer plays:", comChoice);
+    console.log("** Game for computer");
+    const comChoice = getComputerChoice();
+    console.log("Computer plays:", comChoice);
+
+    playRound(uChoice, comChoice);
 }
