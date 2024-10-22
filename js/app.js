@@ -1,15 +1,26 @@
-let isPlaying = false;
+let isPlaying = false,
+    userScore = 0,
+    comScore = 0;
 
 document.getElementById('#devTool')?.addEventListener(
     'click', () => {
         const shouldStart = isPlaying ? confirm("Restart the game ? (The score will be reset)") : confirm("Start a new game ?");
 
         if (shouldStart) {
-            isPlaying = true;
+            initGameData();
             playGame();
         }
     }
 )
+
+/**
+ * Initialize game data
+ */
+function initGameData() {
+    isPlaying = true;
+    userScore = 0;
+    comScore = 0;
+}
 
 /**
  * Game welcome message
@@ -92,6 +103,10 @@ function getHumanChoice() {
  */
 function playRound(uChoice, comChoice) {
     if (uChoice === comChoice) {
+        // Because of the draw both of them have their score incremented
+        userScore += 1;
+        comScore += 1;
+
         console.log("\n\t\t*********** Draw game ***********\n");
         return;
     }
@@ -101,10 +116,12 @@ function playRound(uChoice, comChoice) {
         || (uChoice === 'paper' && comChoice === 'rock');
 
     if (isUserWon) {
+        userScore += 1; // Only user(human player) score is incremented
         console.log(`\n\t\t*********** You win! ${uChoice} beats ${comChoice} ***********\n`);
         return;
     }
 
+    comScore += 1; // Only computer score is incremented
     console.log(`\n\t\t*********** You lose! ${comChoice} beats ${uChoice} ***********\n`);
     return;
 }
@@ -128,4 +145,6 @@ function playGame() {
     console.log("Computer plays:", comChoice);
 
     playRound(uChoice, comChoice);
+
+    console.log(`\n\t\t*********** Scores: User: ${userScore} | Computer: ${comScore} ***********\n`);
 }
