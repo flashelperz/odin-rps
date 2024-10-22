@@ -1,6 +1,7 @@
 let isPlaying = false,
     userScore = 0,
     roundsToPlay = 5,
+    nberOfDraws = 0,
     comScore = 0;
 
 document.getElementById('#devTool')?.addEventListener(
@@ -22,6 +23,7 @@ function initGameData() {
     userScore = 0;
     comScore = 0;
     roundsToPlay = 5;
+    nberOfDraws = 0;
 
     console.clear();
     showWelcome();
@@ -108,6 +110,7 @@ function getHumanChoice() {
  */
 function playRound(uChoice, comChoice) {
     if (uChoice === comChoice) {
+        nberOfDraws += 1;
         console.log("\n\t\t*********** Draw game ***********\n");
         return;
     }
@@ -139,20 +142,27 @@ function playRound(uChoice, comChoice) {
 */
 function playGame() {
     roundsToPlay -= 1;
-    
+
+    console.groupCollapsed("Playing Round");
+
+    // User game
     console.log("** Game for user");
     const uChoice = getHumanChoice();
     console.log("You play:", uChoice);
 
+    // Com game
     console.log("** Game for computer");
     const comChoice = getComputerChoice();
     console.log("Computer plays:", comChoice);
 
+    // PlayRound
     playRound(uChoice, comChoice);
 
-    console.log(`\n\t\t*********** Scores: User: ${userScore} | Computer: ${comScore} ***********\n`);
+    console.groupEnd();
 
-    if(roundsToPlay > 0 ) {
+    if (roundsToPlay > 0) {
         return playGame();
     }
+
+    console.log(`\n\t\t*********** Scores: User: ${userScore} | Computer: ${comScore} | Draw(s): ${nberOfDraws} ***********\n`);
 }
