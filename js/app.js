@@ -1,5 +1,6 @@
 let isPlaying = false,
     userScore = 0,
+    rounds = 5,
     comScore = 0;
 
 document.getElementById('#devTool')?.addEventListener(
@@ -20,6 +21,9 @@ function initGameData() {
     isPlaying = true;
     userScore = 0;
     comScore = 0;
+
+    console.clear();
+    showWelcome();
 }
 
 /**
@@ -133,9 +137,6 @@ function playRound(uChoice, comChoice) {
  * against the `computer`
 */
 function playGame() {
-    console.clear();
-    showWelcome();
-
     console.log("** Game for user");
     const uChoice = getHumanChoice();
     console.log("You play:", uChoice);
