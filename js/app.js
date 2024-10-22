@@ -1,6 +1,6 @@
 let isPlaying = false,
     userScore = 0,
-    rounds = 5,
+    roundsToPlay = 5,
     comScore = 0;
 
 document.getElementById('#devTool')?.addEventListener(
@@ -21,6 +21,7 @@ function initGameData() {
     isPlaying = true;
     userScore = 0;
     comScore = 0;
+    roundsToPlay = 5;
 
     console.clear();
     showWelcome();
@@ -107,10 +108,6 @@ function getHumanChoice() {
  */
 function playRound(uChoice, comChoice) {
     if (uChoice === comChoice) {
-        // Because of the draw both of them have their score incremented
-        userScore += 1;
-        comScore += 1;
-
         console.log("\n\t\t*********** Draw game ***********\n");
         return;
     }
@@ -131,12 +128,18 @@ function playRound(uChoice, comChoice) {
 }
 
 /**
- * Main Method to start the game
+ * Main Method to start the game,
+ * the method will call itselt whenever user's haven't reach
+ * the `rounds playing` limit
  * 
- * The game is in `5 rounds` and user plays 
+ * The game is in `specific rounds` and user plays 
  * against the `computer`
+ * 
+ * @see roundsToPlay for the default number of rounds
 */
 function playGame() {
+    roundsToPlay -= 1;
+    
     console.log("** Game for user");
     const uChoice = getHumanChoice();
     console.log("You play:", uChoice);
@@ -148,4 +151,8 @@ function playGame() {
     playRound(uChoice, comChoice);
 
     console.log(`\n\t\t*********** Scores: User: ${userScore} | Computer: ${comScore} ***********\n`);
+
+    if(roundsToPlay > 0 ) {
+        return playGame();
+    }
 }
