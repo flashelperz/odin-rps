@@ -26,7 +26,7 @@ function showWelcome() {
  * Convert a picked number to it's corresponding 
  * in-game value
  * 
- * @param {*} pickedNumber 
+ * @param {number | string} pickedNumber 
  * @returns 
  */
 function correspondingGameByNumber(pickedNumber) {
@@ -87,11 +87,26 @@ function getHumanChoice() {
 /**
  * Method for playing a round and show the winner
  * 
- * @param {*} uChoice 
- * @param {*} comChoice 
+ * @param {'rock' | 'paper' | 'scissors'} uChoice The user(human player) choice
+ * @param {'rock' | 'paper' | 'scissors'} comChoice the computer choice
  */
 function playRound(uChoice, comChoice) {
+    if (uChoice === comChoice) {
+        console.log("Draw game");
+        return;
+    }
 
+    const isUserWon = (uChoice === 'rock' && comChoice === 'scissors')
+        || (uChoice === 'scissors' && comChoice === 'paper')
+        || (uChoice === 'paper' && comChoice === 'rock');
+
+    if (isUserWon) {
+        console.log(`You win! ${uChoice} beats ${comChoice}`);
+        return;
+    }
+
+    console.log(`You lose! ${comChoice} beats ${uChoice}`);
+    return;
 }
 
 /**
