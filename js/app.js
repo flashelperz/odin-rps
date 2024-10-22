@@ -85,6 +85,16 @@ function getHumanChoice() {
 }
 
 /**
+ * Method for playing a round and show the winner
+ * 
+ * @param {*} uChoice 
+ * @param {*} comChoice 
+ */
+function playRound(uChoice, comChoice) {
+
+}
+
+/**
  * Main Method to start the game
  * 
  * The game is in `5 rounds` and user plays 
@@ -94,11 +104,11 @@ function playGame() {
     console.clear();
     showWelcome();
 
-    console.log("** Game for user");
-    const uChoice = getHumanChoice(); 
-    console.log("You play:", uChoice);
+    // console.log("** Game for user");
+    // const uChoice = getHumanChoice(); 
+    // console.log("You play:", uChoice);
 
-    console.log("** Game for computer");
-    const comChoice = getComputerChoice();
-    console.log("Computer plays:", comChoice);
+    // console.log("** Game for computer");
+    // const comChoice = getComputerChoice();
+    // console.log("Computer plays:", comChoice);
 }
