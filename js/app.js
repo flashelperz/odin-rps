@@ -165,4 +165,12 @@ function playGame() {
     }
 
     console.log(`\n\t\t*********** Scores: User: ${userScore} | Computer: ${comScore} | Draw(s): ${nberOfDraws} ***********\n`);
+    if(userScore > comScore) {
+        console.log(`\n\n\t\t*********** You win! ***********\n`);
+    }else if(userScore < comScore) {
+        console.log(`\n\n\t\t*********** You lose! ***********\n`);
+    }else {
+        console.log(`\n\n\t\t*********** Draw Game! ***********\n`);
+    }
+    isPlaying = false; // the game is over
 }
